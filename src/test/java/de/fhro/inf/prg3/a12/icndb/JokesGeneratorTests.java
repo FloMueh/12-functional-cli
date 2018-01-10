@@ -12,14 +12,20 @@ class JokesGeneratorTests {
 
     @Test
     void testRandomStream() {
-        /* timeout to ensure that stream does not loop forever */
-        /* TODO implement a test for the random joke stream */
+        jokeGenerator.randomJokesStream()
+                .limit(10)
+                .map(x -> x.getValue().getJoke())
+                .forEach(System.out::println);
     }
 
 
     @Test
     void testJokesStream() {
-        /* TODO implement a test for the linear jokes generator */
+        jokeGenerator.jokesStream()
+                .skip(10)
+                .limit(20)
+                .map(x -> x.getValue().getJoke())
+                .forEach(System.out::println);
     }
 
 }
